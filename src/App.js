@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import Detail from './pages/Detail';
+import Form from './pages/Form';
+import './index.css'; // Подключаем наши стили
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/* Шапка приложения */}
+      <div className="navbar">
+        <h2>🛡️ SecurityOS</h2>
+        <nav>
+          <Link to="/">Объекты</Link>
+          <Link to="/add">Добавить КПП</Link>
+        </nav>
+      </div>
+
+      {/* Основной контент */}
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/add" element={<Form />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

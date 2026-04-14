@@ -1,0 +1,29 @@
+{
+  "checkpoints": [
+    {
+      "id": "1",
+      "name": "Главный КПП (Север)",
+      "status": "Активен",
+      "guards": 4
+    },
+    {
+      "id": "2",
+      "name": "Западные ворота",
+      "status": "На ремонте",
+      "guards": 0
+    },
+    {
+      "name": "НГТУ КПП",
+      "status": "Отключен",
+      "guards": 0,
+      "id": "ABTSfOEZXvs"
+    },
+    {
+      "name": "ИТМО",
+      "status": "Активен",
+      "guards": 67,
+      "id": "C5UQ0u9z_3E"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
