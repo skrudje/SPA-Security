@@ -10,7 +10,6 @@ const Detail = () => {
   useEffect(() => {
     const loadItem = async () => {
       try {
-        // ИСПРАВЛЕНО: добавлено /checkpoints/
         const response = await axios.get(`https://api-security-27dv.onrender.com/checkpoints/${id}`);
         setFormData(response.data);
       } catch (error) {
@@ -23,7 +22,6 @@ const Detail = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // ИСПРАВЛЕНО: добавлено /checkpoints/
       await axios.put(`https://api-security-27dv.onrender.com/checkpoints/${id}`, JSON.stringify(formData), {
         headers: { "Content-Type": "application/json" }
       });

@@ -21,10 +21,8 @@ const Home = () => {
       setError(null);
       await new Promise(resolve => setTimeout(resolve, 500)); 
       
-      // ИСПРАВЛЕНО: добавлено /checkpoints
       const response = await axios.get("https://api-security-27dv.onrender.com/checkpoints");
       
-      // Надежная проверка данных
       if (Array.isArray(response.data)) {
         setCheckpoints(response.data);
       } else if (response.data && Array.isArray(response.data.checkpoints)) {
@@ -42,7 +40,6 @@ const Home = () => {
   const deleteItem = async (id) => {
     if (!window.confirm('Вы уверены, что хотите удалить этот КПП?')) return;
     try {
-      // ИСПРАВЛЕНО: добавлено /checkpoints/
       await axios.delete(`https://api-security-27dv.onrender.com/checkpoints/${id}`);
       setCheckpoints(checkpoints.filter(item => item.id !== id));
     } catch (err) {

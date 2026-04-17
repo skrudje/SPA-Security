@@ -12,7 +12,6 @@ const Form = () => {
     e.preventDefault();
     const newItem = { name, status, guards: Number(guards) };
     try {
-      // ИСПРАВЛЕНО: добавлено /checkpoints
       await axios.post('https://api-security-27dv.onrender.com/checkpoints', JSON.stringify(newItem), {
         headers: { "Content-Type": "application/json" }
       });
