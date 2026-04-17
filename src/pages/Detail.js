@@ -10,10 +10,11 @@ const Detail = () => {
   useEffect(() => {
     const loadItem = async () => {
       try {
-        const response = await axios.get(`https://api-security-27dv.onrender.com/${id}`);
+        // ИСПРАВЛЕНО: добавлено /checkpoints/
+        const response = await axios.get(`https://api-security-27dv.onrender.com/checkpoints/${id}`);
         setFormData(response.data);
       } catch (error) {
-        console.error("Ошибка загрузки:", error);
+        console.error("Ошибка загрузки:", error); 
       }
     };
     loadItem();
@@ -22,7 +23,8 @@ const Detail = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://api-security-27dv.onrender.com${id}`, JSON.stringify(formData), {
+      // ИСПРАВЛЕНО: добавлено /checkpoints/
+      await axios.put(`https://api-security-27dv.onrender.com/checkpoints/${id}`, JSON.stringify(formData), {
         headers: { "Content-Type": "application/json" }
       });
       alert("Данные КПП успешно обновлены!");
@@ -39,19 +41,13 @@ const Detail = () => {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
-      {/* Карточка формы */}
       <div style={{ width: '100%', maxWidth: '500px', backgroundColor: 'white', padding: '30px', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-        
-        <h2 style={{ borderBottom: '2px solid #f0f2f5', paddingBottom: '10px', marginTop: 0 }}>
-          Редактирование КПП
-        </h2>
-        
+        <h2 style={{ borderBottom: '2px solid #f0f2f5', paddingBottom: '10px', marginTop: 0 }}>Редактирование КПП</h2>
         <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
           <div className="form-group">
             <label>Название объекта:</label>
             <input type="text" name="name" value={formData.name} onChange={handleChange} required />
           </div>
-          
           <div className="form-group">
             <label>Статус:</label>
             <select name="status" value={formData.status} onChange={handleChange}>
@@ -60,17 +56,12 @@ const Detail = () => {
               <option value="Отключен">Отключен</option>
             </select>
           </div>
-          
           <div className="form-group">
             <label>Количество охранников:</label>
             <input type="number" name="guards" value={formData.guards} onChange={handleChange} required min="0" />
           </div>
-          
-          <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '10px' }}>
-            Сохранить изменения
-          </button>
+          <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '10px' }}>Сохранить изменения</button>
         </form>
-
       </div>
     </div>
   );

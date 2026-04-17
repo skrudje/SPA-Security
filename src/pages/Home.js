@@ -20,8 +20,18 @@ const Home = () => {
       setLoading(true);
       setError(null);
       await new Promise(resolve => setTimeout(resolve, 500)); 
-      const response = await axios.get("https://api-security-27dv.onrender.com");
-      setCheckpoints(response.data);
+      
+      // ИСПРАВЛЕНО: добавлено /checkpoints
+      const response = await axios.get("https://api-security-27dv.onrender.com/checkpoints");
+      
+      // Надежная проверка данных
+      if (Array.isArray(response.data)) {
+        setCheckpoints(response.data);
+      } else if (response.data && Array.isArray(response.data.checkpoints)) {
+        setCheckpoints(response.data.checkpoints);
+      } else {
+        setCheckpoints([]);
+      }
     } catch (err) {
       setError("Не удалось загрузить данные с сервера.");
     } finally {
@@ -32,7 +42,8 @@ const Home = () => {
   const deleteItem = async (id) => {
     if (!window.confirm('Вы уверены, что хотите удалить этот КПП?')) return;
     try {
-      await axios.delete(`https://api-security-27dv.onrender.com${id}`);
+      // ИСПРАВЛЕНО: добавлено /checkpoints/
+      await axios.delete(`https://api-security-27dv.onrender.com/checkpoints/${id}`);
       setCheckpoints(checkpoints.filter(item => item.id !== id));
     } catch (err) {
       alert("Ошибка при удалении КПП.");
@@ -45,8 +56,10 @@ const Home = () => {
     return 'status-badge status-offline';
   };
 
-  const filteredCheckpoints = checkpoints.filter(item => {
-    const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
+  const safeCheckpoints = Array.isArray(checkpoints) ? checkpoints : [];
+  
+  const filteredCheckpoints = safeCheckpoints.filter(item => {
+    const matchesSearch = item.name && item.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === 'Все' || item.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
@@ -58,7 +71,6 @@ const Home = () => {
         <Link to="/add" className="btn btn-primary">+ Добавить объект</Link>
       </div>
 
-      {/* Панель фильтров */}
       {!loading && !error && (
         <div style={{ display: 'flex', gap: '15px', marginTop: '20px', backgroundColor: '#f8f9fa', padding: '15px', borderRadius: '8px', border: '1px solid #e1e4e8' }}>
           <div className="form-group" style={{ margin: 0, flex: 1 }}>
@@ -84,7 +96,7 @@ const Home = () => {
       {error && <div style={{ color: 'red', marginTop: '15px' }}><strong>Ошибка:</strong> {error}</div>}
       
       {!loading && !error && filteredCheckpoints.length === 0 && (
-        <p style={{ marginTop: '20px', color: '#666' }}>Объекты не найдены. Попробуйте изменить параметры поиска.</p>
+        <p style={{ marginTop: '20px', color: '#666' }}>Объекты не найдены.</p>
       )}
 
       {!loading && !error && filteredCheckpoints.length > 0 && (
