@@ -12,7 +12,7 @@ const Form = () => {
     e.preventDefault();
     const newItem = { name, status, guards: Number(guards) };
     try {
-      await axios.post('http://localhost:5000/checkpoints', JSON.stringify(newItem), {
+      await axios.post('https://api-security-27dv.onrender.com', JSON.stringify(newItem), {
         headers: { "Content-Type": "application/json" }
       });
       navigate('/');
@@ -22,7 +22,6 @@ const Form = () => {
   };
 
   return (
-    // Добавлен flex-контейнер для центрирования
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
       {/* Карточка формы с белым фоном и тенью */}
       <div style={{ width: '100%', maxWidth: '500px', backgroundColor: 'white', padding: '30px', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>

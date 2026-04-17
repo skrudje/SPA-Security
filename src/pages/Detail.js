@@ -10,7 +10,7 @@ const Detail = () => {
   useEffect(() => {
     const loadItem = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/checkpoints/${id}`);
+        const response = await axios.get(`https://api-security-27dv.onrender.com/${id}`);
         setFormData(response.data);
       } catch (error) {
         console.error("Ошибка загрузки:", error);
@@ -22,7 +22,7 @@ const Detail = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/checkpoints/${id}`, JSON.stringify(formData), {
+      await axios.put(`https://api-security-27dv.onrender.com${id}`, JSON.stringify(formData), {
         headers: { "Content-Type": "application/json" }
       });
       alert("Данные КПП успешно обновлены!");
@@ -38,7 +38,6 @@ const Detail = () => {
   };
 
   return (
-    // Тот же flex-контейнер
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
       {/* Карточка формы */}
       <div style={{ width: '100%', maxWidth: '500px', backgroundColor: 'white', padding: '30px', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>

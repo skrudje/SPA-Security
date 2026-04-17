@@ -8,7 +8,6 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  // Новые состояния для поиска и фильтрации
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('Все');
 
@@ -21,7 +20,7 @@ const Home = () => {
       setLoading(true);
       setError(null);
       await new Promise(resolve => setTimeout(resolve, 500)); 
-      const response = await axios.get("http://localhost:5000/checkpoints");
+      const response = await axios.get("https://api-security-27dv.onrender.com");
       setCheckpoints(response.data);
     } catch (err) {
       setError("Не удалось загрузить данные с сервера.");
@@ -33,7 +32,7 @@ const Home = () => {
   const deleteItem = async (id) => {
     if (!window.confirm('Вы уверены, что хотите удалить этот КПП?')) return;
     try {
-      await axios.delete(`http://localhost:5000/checkpoints/${id}`);
+      await axios.delete(`https://api-security-27dv.onrender.com${id}`);
       setCheckpoints(checkpoints.filter(item => item.id !== id));
     } catch (err) {
       alert("Ошибка при удалении КПП.");
@@ -46,7 +45,6 @@ const Home = () => {
     return 'status-badge status-offline';
   };
 
-  // Логика фильтрации и поиска
   const filteredCheckpoints = checkpoints.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === 'Все' || item.status === statusFilter;
