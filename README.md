@@ -41,3 +41,19 @@
 1. **Клонируйте репозиторий:**
    ```bash
    git clone [https://github.com/skrudje/SPA-Security.git](https://github.com/skrudje/SPA-Security.git)
+   ```
+2. **Установите зависимости:**
+   ```bash
+   npm install
+   ```
+3. **Запустите локальный сервер базы данных:**
+   ```bash
+   npm run server
+   ```
+4. Откройте новый терминал и **запустите React-приложение:**
+   ```bash
+   npm start
+   ```
+
+---
+*Разработано в 2026 году.*
