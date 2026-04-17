@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# 🛡️ SecurityOS: Управление физической безопасностью
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![JSON Server](https://img.shields.io/badge/JSON_Server-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-## Available Scripts
+Одностраничное веб-приложение (SPA) для мониторинга и управления контрольно-пропускными пунктами (КПП) и объектами охраны. Разработано в рамках лабораторной работы по дисциплине «Технологии и методы программирования».
 
-In the project directory, you can run:
+🌍 **Живая демо-версия:** [spa-security.vercel.app](https://spa-security.vercel.app)
 
-### `npm start`
+> **🔐 Тестовые данные для входа:**
+> * **Логин:** `xadmin`
+> * **Пароль:** `xservice54`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✨ Ключевой функционал
 
-### `npm test`
+* **Система авторизации:** Защищенные маршруты (Protected Routes), доступ к панели управления только после входа.
+* **Полный CRUD:** Создание, чтение, обновление и удаление объектов (КПП).
+* **Умный поиск:** Мгновенная фильтрация списка по названию объекта.
+* **Фильтрация по статусам:** Сортировка объектов по их текущему состоянию (*Активен / На ремонте / Отключен*).
+* **Современный UI/UX:** Индикаторы загрузки, обработка ошибок сервера, адаптивный дизайн (CSS).
+* **Облачный API:** Данные хранятся и обрабатываются на удаленном сервере (Render).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🛠️ Стек технологий
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* **Frontend:** React.js, React Router DOM v6, Axios
+* **Backend (Mock API):** Node.js, JSON Server
+* **Хостинг:** Vercel (фронтенд), Render.com (бэкенд)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 💻 Локальный запуск (для разработчиков)
 
-### `npm run eject`
+Если вы хотите запустить проект на своем компьютере:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Клонируйте репозиторий:**
+   ```bash
+   git clone [https://github.com/skrudje/SPA-Security.git](https://github.com/skrudje/SPA-Security.git)
+   ```
+2. **Установите зависимости:**
+   ```bash
+   npm install
+   ```
+3. **Запустите локальный сервер базы данных:**
+   ```bash
+   npm run server
+   ```
+4. Откройте новый терминал и **запустите React-приложение:**
+   ```bash
+   npm start
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+*Разработано в 2026 году.*
