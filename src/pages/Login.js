@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     
     if (username === 'xadmin' && password === 'xservice54') {
       localStorage.setItem('isAuth', 'true');
-      window.location.href = '/';
+      
+      window.location.href = '/'; 
     } else {
       setError('Неверный логин или пароль');
     }
