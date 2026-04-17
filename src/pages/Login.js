@@ -12,7 +12,7 @@ const Login = () => {
     
     if (username === 'xadmin' && password === 'xservice54') {
       localStorage.setItem('isAuth', 'true');
-      navigate('/');
+      window.location.href = '/';
     } else {
       setError('Неверный логин или пароль');
     }
